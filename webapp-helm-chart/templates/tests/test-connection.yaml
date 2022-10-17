@@ -1,0 +1,18 @@
+{{- range .Values.different_images }}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ . }} 
+  labels:
+    app: {{ . }} 
+spec:
+  restartPolicy: Never
+  containers:
+  - name: {{ . }} 
+    image: {{ . }} 
+    imagePullPolicy: Always
+    command: 
+    - sleep 
+    - infinity
+---
+{{- end }} 
